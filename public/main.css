@@ -4,5 +4,10 @@
 
 #map {
     width: 100%;
-    height: 100%;
+    height: 580px;
+}
+
+#photos {
+    height: 580px;
+    overflow: auto;
 }
