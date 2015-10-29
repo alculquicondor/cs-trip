@@ -3,9 +3,19 @@
   <title>A CS Trip</title>
   <link rel="shortcut icon" href="https://cdnamigocloud.global.ssl.fastly.net/dashboard/img/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" type="text/css" href="bower_components/amigocloud-js/amigocloud.min.css">
+  <link rel="stylesheet" type="text/css" href="main.css">
+  <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 </head>
 <body>
-<div id="map" style="width: 100%;height: 100%"></div>
+<div class="container-fluid">
+  <h1>A CS Trip <small>Aldo Culquicondor &lt;aldo@amigocloud.com&gt;</small></h1>
+  <div class="col-md-9">
+    <div id="map"></div>
+  </div>
+  <div class="col-md-3" id="photos"></div>
+</div>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/amigocloud-js/amigocloud.min.js"></script>
 <script src="main.js"></script>
 </body>
