@@ -47,7 +47,7 @@ csTripApp.controller('CsTripCtrl', ['$scope', '$timeout', function ($scope, $tim
 
     $scope.goToPosition = function () {
         var step = $scope.route[$scope.position];
-        $scope.map.setView(step, 8, {
+        $scope.map.setView(step, 10, {
             pan: {duration: 1},
             animate: true
         });
