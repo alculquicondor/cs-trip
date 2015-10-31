@@ -1,6 +1,6 @@
 # cs-trip
 
-Geo slides using amigocloud.js
+Geo slides using [amigocloud.js](https://github.com/amigocloud/amigocloud-js)
 
 ## Author
 
