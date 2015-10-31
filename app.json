@@ -1,7 +1,7 @@
 {
   "name": "A CS Trip",
-  "description": "Just a path in computer science",
+  "description": "Just a trip of a computer scientist",
   "repository": "https://github.com/alculquicondor/cs-trip",
   "logo": "https://cdnamigocloud.global.ssl.fastly.net/dashboard/img/favicon.ico",
-  "keywords": ["node", "express", "static"]
+  "keywords": ["node", "express", "static", "amigocloud"]
 }

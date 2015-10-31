@@ -1,0 +1,31 @@
+{
+  "name": "cs-trip",
+  "description": "Just a trip of a computer scientist",
+  "main": "index.js",
+  "authors": [
+    "Aldo Culquicondor"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "heroku",
+    "express",
+    "amigocloud"
+  ],
+  "homepage": "http://cs-trip.amigocloud.net",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "amigocloud-js": "~1.0.4",
+    "bootstrap": "~3.3.5",
+    "angular": "~1.4.7"
+  }
+}

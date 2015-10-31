@@ -16,6 +16,11 @@
 }
 
 #photos {
-    height: 100%;
+    height: calc(100% - 2em);
     overflow: auto;
+}
+
+.instructions {
+    padding: 1em;
+    border-radius: 0.5em;
 }

@@ -1,29 +1,31 @@
 {
-  "name": "node-js-sample",
-  "version": "0.2.0",
-  "description": "A sample Node.js app using Express 4",
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js"
-  },
-  "dependencies": {
-    "express": "^4.13.3"
-  },
-  "engines": {
-    "node": "4.0.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/heroku/node-js-sample"
-  },
-  "keywords": [
-    "node",
-    "heroku",
-    "express"
-  ],
-  "author": "Mark Pundsack",
-  "contributors": [
-    "Zeke Sikelianos <zeke@sikelianos.com> (http://zeke.sikelianos.com)"
-  ],
-  "license": "MIT"
+    "name": "cs-trip",
+    "version": "0.1.0",
+    "description": "Just a trip of a computer scientist",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js"
+    },
+    "dependencies": {
+        "express": "^4.13.3",
+        "bower": "^1.6.5"
+    },
+    "scripts": {
+        "postinstall": "./node_modules/bower/bin/bower install"
+    },
+    "engines": {
+        "node": "4.0.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/alculquicondor/cs-trip"
+    },
+    "keywords": [
+        "node",
+        "heroku",
+        "express",
+        "amigocloud"
+    ],
+    "author": "Aldo Culquicondor",
+    "license": "MIT"
 }

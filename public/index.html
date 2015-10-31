@@ -1,19 +1,39 @@
-<html>
+<html ng-app="csTripApp">
 <head>
   <title>A CS Trip</title>
-  <link rel="shortcut icon" href="https://cdnamigocloud.global.ssl.fastly.net/dashboard/img/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" type="text/css" href="bower_components/amigocloud-js/amigocloud.min.css">
   <link rel="stylesheet" type="text/css" href="main.css">
   <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 </head>
-<body>
+<body ng-controller="CsTripCtrl">
 <div class="container-fluid" id="content">
-  <h1>A CS Trip <small>Aldo Culquicondor &lt;aldo@amigocloud.com&gt;</small></h1>
+  <h1>Just a Computer Scientist's Trip <small>Aldo Culquicondor &lt;aldo@amigocloud.com&gt;</small></h1>
   <div class="col-md-8">
     <div id="map"></div>
   </div>
-  <div class="col-md-4" id="photos"></div>
+  <div class="col-md-4">
+    <div class="row">
+      <div class="pull-right">
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-default"
+                  ng-disabled="position === -1" ng-click="previousSlide()">
+            <i class="glyphicon glyphicon-chevron-left"></i></button>
+          <button type="button" class="btn btn-default"
+                  ng-disabled="position === route.length-1" ng-click="nextSlide()">
+            <i class="glyphicon glyphicon-chevron-right"></i></button>
+        </div>
+      </div>
+    </div>
+    <div ng-show="position === -1">
+      <h2>A trip on why do I do computer science</h2>
+      <p class="bg-info instructions">Use arrows or click point on the map to do the trip.</p>
+    </div>
+    <div id="photos" ng-show="position !== -1">
+      <img ng-src="{{ img }}" class="img-responsive img-thumbnail" ng-repeat="img in images"/>
+    </div>
+  </div>
 </div>
+<script src="bower_components/angular/angular.min.js"></script>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/amigocloud-js/amigocloud.min.js"></script>
