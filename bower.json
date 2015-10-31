@@ -24,7 +24,7 @@
     "tests"
   ],
   "dependencies": {
-    "amigocloud-js": "~1.0.4",
+    "amigocloud-js": "*",
     "bootstrap": "~3.3.5",
     "angular": "~1.4.7"
   }
