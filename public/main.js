@@ -73,7 +73,7 @@ csTripApp.controller('CsTripCtrl', ['$scope', '$timeout', function ($scope, $tim
         }
 
         var step = $scope.route[$scope.positionMap[amigoId]],
-            html = '<h3>' + step.title + '</h3><p>' + step.description + '</p>';
+            html = '<h3>' + step.title + '<br/><small>' + step.date + '</small></h3><p>' + step.description + '</p>';
 
         L.popup().setLatLng(step).setContent(html).openOn($scope.map);
     };
@@ -84,7 +84,8 @@ csTripApp.controller('CsTripCtrl', ['$scope', '$timeout', function ($scope, $tim
                 $scope.datasetData = datasetData;
 
                 L.amigo.utils.get('/users/475/projects/1635/sql', {
-                    query: 'SELECT ST_X(location) AS lng, ST_Y(location) AS lat, amigo_id, title, description FROM ' +
+                    query:
+                    'SELECT ST_X(location) AS lng, ST_Y(location) AS lat, amigo_id, title, description, date FROM ' +
                     datasetData.table_name + ' ORDER BY "order"'
                 }).then(function (r) {
                     $scope.$apply(function () {
