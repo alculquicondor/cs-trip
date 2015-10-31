@@ -18,15 +18,6 @@ csTripApp.controller('CsTripCtrl', ['$scope', '$timeout', function ($scope, $tim
 
     L.amigo.auth.setToken("R:Z6iIcrcXhuN6mxbvolFrBQFBP4acr7bRyqbTPf");
 
-    L.amigo.utils.get('/users/475/projects/1635/sql', {
-        query: 'SELECT ST_X(location) AS lng, ST_Y(location) AS lat, amigo_id FROM dataset_28987 ORDER BY "order"'
-    }).then(function (r) {
-        $scope.route = r.data;
-        for (var i in $scope.route) {
-            $scope.positionMap[$scope.route[i].amigo_id] = i;
-        }
-    });
-
     $scope.map.addBaseLayer(L.amigo.AmigoGray);
 
     $scope.previousSlide = function () {
@@ -82,22 +73,28 @@ csTripApp.controller('CsTripCtrl', ['$scope', '$timeout', function ($scope, $tim
         }
 
         var step = $scope.route[$scope.positionMap[amigoId]],
-            sql = "SELECT title, description FROM " + $scope.datasetData.table_name +
-                " WHERE amigo_id='" + amigoId + "'";
-        L.amigo.utils.get('/users/475/projects/1635/sql', {query: sql})
-            .then(function (r) {
-                if (r.data.length > 0) {
-                    var data = r.data[0],
-                        html = '<h3>' + data.title + '</h3><p>' + data.description + '</p>';
-                    L.popup().setLatLng(step).setContent(html).openOn($scope.map);
-                }
-            })
+            html = '<h3>' + step.title + '</h3><p>' + step.description + '</p>';
+
+        L.popup().setLatLng(step).setContent(html).openOn($scope.map);
     };
 
     $scope.$watch('map.datasetLayers["CS Trip"].options.datasetData',
         function (datasetData, oldValue) {
             if (datasetData !== oldValue) {
                 $scope.datasetData = datasetData;
+
+                L.amigo.utils.get('/users/475/projects/1635/sql', {
+                    query: 'SELECT ST_X(location) AS lng, ST_Y(location) AS lat, amigo_id, title, description FROM ' +
+                    datasetData.table_name + ' ORDER BY "order"'
+                }).then(function (r) {
+                    $scope.$apply(function () {
+                        $scope.route = r.data;
+                        for (var i in $scope.route) {
+                            $scope.positionMap[$scope.route[i].amigo_id] = i;
+                        }
+                    });
+                });
+
                 if (!$scope.map.utfGrids) {
                     $scope.map.utfGrids = {};
                 }
@@ -112,11 +109,12 @@ csTripApp.controller('CsTripCtrl', ['$scope', '$timeout', function ($scope, $tim
                         if (e.data) {
                             var amigoId = e.data.amigo_id, idx;
 
-                            $scope.showPopup(amigoId);
-                            $scope.loadPhotos(amigoId);
                             $scope.$apply(function () {
                                 $scope.position = $scope.positionMap[amigoId];
                             });
+
+                            $scope.showPopup(amigoId);
+                            $scope.loadPhotos(amigoId);
                         }
                     }
                 );
