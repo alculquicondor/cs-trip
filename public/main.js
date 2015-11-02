@@ -95,38 +95,26 @@ csTripApp.controller('CsTripCtrl', ['$scope', '$timeout', function ($scope, $tim
                         }
                     });
                 });
-
-                if (!$scope.map.utfGrids) {
-                    $scope.map.utfGrids = {};
-                }
-
-                $scope.map.utfGrids[datasetData.name] = L.utfGrid(
-                    datasetData.tiles + '/{z}/{x}/{y}.json' + L.amigo.auth.getTokenParam(),
-                    {
-                        useJsonP: false,
-                        datasetData: datasetData
-                    }
-                ).on('click', function (e) {
-                        if (e.data) {
-                            var amigoId = e.data.amigo_id, idx;
-
-                            $scope.$apply(function () {
-                                $scope.position = $scope.positionMap[amigoId];
-                            });
-
-                            $scope.showPopup(amigoId);
-                            $scope.loadPhotos(amigoId);
-                        }
-                    }
-                );
-
-                $scope.map.addLayer($scope.map.utfGrids[datasetData.name]);
             }
         }
     );
 
     $scope.map.addDatasetLayer({
-        url: '/users/475/projects/1635/datasets/28987'
+        url: '/users/475/projects/1635/datasets/28987',
+        popup: {
+            overrideCallback: function (e) {
+                if (e.data) {
+                    var amigoId = e.data.amigo_id, idx;
+
+                    $scope.$apply(function () {
+                        $scope.position = $scope.positionMap[amigoId];
+                    });
+
+                    $scope.showPopup(amigoId);
+                    $scope.loadPhotos(amigoId);
+                }
+            }
+        }
     });
 
     $timeout(function () {
